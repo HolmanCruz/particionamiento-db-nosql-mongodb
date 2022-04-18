@@ -29,9 +29,9 @@ md C:\data\repl\n6
 md C:\data\config\n1 
 md C:\data\config\n2 
 md C:\data\config\n3 
-</code><pre>
+</code></pre>
 
 
    
-
+_ _ _
 # Actividad 6 : Pruebas de particionamiento de bases de datos NoSQL
