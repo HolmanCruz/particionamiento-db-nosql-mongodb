@@ -6,4 +6,9 @@
 4. El grupo de partición debe estar compuesto por servidores de configuración, enrutadores de consultas y shards.
 5. El sistema debe emplear particionamiento basado en hash. 
 
+## Comandos
+|Comando|Función|
+|--|--|
+|md|Crea directorio en ruta especifica|
+
 # Actividad 6 : Pruebas de particionamiento de bases de datos NoSQL
