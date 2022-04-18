@@ -10,5 +10,10 @@
 |Comando|Función|
 |--|--|
 |md|Crea directorio en ruta especifica|
+|--port|Indica el puerto al que se hace el llamado|
+|--dbpath|Indica el directorio que contiene los datos|
+|--configsvr|Especifica el servidor de configuración|
+|--configdb|Asigna los enrutadores de consulta|
+|--shardsvr|Crea un shard en una ruta especifica|
 
 # Actividad 6 : Pruebas de particionamiento de bases de datos NoSQL
