@@ -31,7 +31,18 @@ md C:\data\config\n2
 md C:\data\config\n3 
 </code></pre>
 
+Creación de nodos de conjunto de replicas: 
+<pre><code>
+mongod --port 27017 --dbpath \data\repl\n1 --replSet rs0
+mongod --port 27018 --dbpath \data\repl\n2 --replSet rs0
+mongod --port 27019 --dbpath \data\repl\n3 --replSet rs0
+</code></pre>
 
+Adición de nodos secundarios desde el puerto 27017: 
+<pre><code>
+rs.add("192.168.0.18:27018")
+rs.add("192.168.0.18:27019")
+</code></pre>
    
 _ _ _
 # Actividad 6 : Pruebas de particionamiento de bases de datos NoSQL
