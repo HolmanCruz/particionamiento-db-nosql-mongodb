@@ -16,4 +16,22 @@
 |--configdb|Asigna los enrutadores de consulta|
 |--shardsvr|Crea un shard en una ruta especifica|
 
+## Scripts
+Creación de directorios:
+<pre><code>
+md C:\data\repl\n1 
+md C:\data\repl\n2 
+md C:\data\repl\n3 
+md C:\data\repl\n4 
+md C:\data\repl\n5 
+md C:\data\repl\n6 
+
+md C:\data\config\n1 
+md C:\data\config\n2 
+md C:\data\config\n3 
+</code><pre>
+
+
+   
+
 # Actividad 6 : Pruebas de particionamiento de bases de datos NoSQL
