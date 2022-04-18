@@ -43,6 +43,62 @@ Adición de nodos secundarios desde el puerto 27017:
 rs.add("192.168.0.18:27018")
 rs.add("192.168.0.18:27019")
 </code></pre>
-   
+
+Llamado a base de datos:
+<pre><code>
+use myfootballnine 
+</code></pre>
+
+Activación de servidores:
+<pre><code>
+mongod --port 27022 --dbpath \data\config\n1 --configsvr --bind_ip 192.168.0.18
+mongod --port 27023 --dbpath \data\config\n2 --configsvr --bind_ip 192.168.0.18
+mongod --port 27024 --dbpath \data\config\n3 --configsvr --bind_ip 192.168.0.18
+</code></pre>
+
+Activación de enrutador:
+<pre><code>
+mongos --configdb 192.168.0.18:27022,192.168.0.18:27023,192.168.0.18:27024 --port  27021 --bind_ip 192.168.0.18
+</code></pre>
+
+Asignación de réplica inicial como shard:
+<pre><code>
+mongo --port 27021 --host 192.168.0.18
+</code></pre>
+
+Creación de segundo shard:
+<pre><code>
+mongod --port 27013 --dbpath \data\repl\n4 --replSet rs1
+mongo --port 27013
+rs.initiate()
+mongod --port 27014 --dbpath \data\repl\n5 --replSet rs1
+mongod --port 27015 --dbpath \data\repl\n6 --replSet rs1
+</code></pre>
+
+Adición de nodos secundarios desde el puerto 27013:
+<pre><code>
+rs.add("192.168.0.18:27014")
+rs.add("192.168.0.18:27015")
+</code></pre>
+
+Adición de réplica como shard:
+<pre><code>
+sh.addShard("rs1\192.168.0.18:27013,192.168.0.18:27014,192.168.0.18:27015")
+sh.status()
+</code></pre>
+
+Distribución de colección desde enrutador:
+<pre><code>
+use myfootballnine
+sh.enambleSharding("myfootballnine")
+db.ensayo.createIndex({"_id":1})
+sh.shardCollection("myfootballnine.ensayo",{"_id:1"}){ "collectionsharded" : "myfootballnine.ensayo", "ok" : 1 }
+</code></pre>
+
 _ _ _
 # Actividad 6 : Pruebas de particionamiento de bases de datos NoSQL
+
+
+## Referencias Bibliográficas
+Sarasa, A. (2016). *Introducción a las bases de datos NoSQL usando MongoDB*.. Editorial UOC. [https://elibro.net/es/lc/biblioibero/titulos/58524]
+MongoDB. (2008). *MongoDB Sharding*. Shardign [https://www.mongodb.com/docs/v4.0/sharding/]
